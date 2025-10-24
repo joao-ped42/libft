@@ -1,44 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-ped <joao-ped@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:48:23 by joao-ped          #+#    #+#             */
-/*   Updated: 2025/10/23 14:48:28 by joao-ped         ###   ########.fr       */
+/*   Created: 2025/10/20 11:21:38 by joao-ped          #+#    #+#             */
+/*   Updated: 2025/10/20 17:25:49 by joao-ped         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strdup(const char *s)
+int	ft_isalpha(int c)
 {
-	char	*str2;
-	int		i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	str2 = malloc(sizeof(char) * (i + 1));
-	i = 0;
-	if (str2)
-	{
-		while (s[i])
-		{
-			str2[i] = s[i];
-			i++;
-		}
-		return (str2);
-	}
-	else
-		return (NULL);
+	if (((c >= 'a') && (c <= 'z')) || ((c >= 'A') && (c <= 'Z')))
+		return (1024);
+	return (0);
 }
 /*#include <stdio.h>
-int main(void)
+#include <ctype.h>
+int	main(void)
 {
-    const char naruto[] = "Soldado Soldado";
-    char *sonic;
-    sonic = (ft_strdup(naruto));
-    printf("%s", sonic);
+	printf("%d, %d, %d\n", ft_isalpha('A'), ft_isalpha('a'), ft_isalpha('1'));
+	printf("%d, %d, %d", isalpha("A"), isalpha('a'), isalpha('1'));
 }*/

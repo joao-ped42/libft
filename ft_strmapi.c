@@ -1,44 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-ped <joao-ped@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:48:23 by joao-ped          #+#    #+#             */
-/*   Updated: 2025/10/23 14:48:28 by joao-ped         ###   ########.fr       */
+/*   Created: 2025/10/23 16:04:14 by joao-ped          #+#    #+#             */
+/*   Updated: 2025/10/23 16:30:47 by joao-ped         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str2;
-	int		i;
+	unsigned int		i;
+	char				*res;
 
 	i = 0;
 	while (s[i])
 		i++;
-	str2 = malloc(sizeof(char) * (i + 1));
+	res = malloc(sizeof(char) * (i + 1));
 	i = 0;
-	if (str2)
+	while (s[i])
 	{
-		while (s[i])
-		{
-			str2[i] = s[i];
-			i++;
-		}
-		return (str2);
+		res[i] = f(i, s[i]);
+		i++;
 	}
-	else
-		return (NULL);
+	res[i] = '\0';
+	return (res);
 }
-/*#include <stdio.h>
+/*
+char	naruto(unsigned int i, char c)
+{
+	if (i % 2 == 0)
+		return (c - 32);
+	return (c);
+}
+
+#include <stdio.h>
 int main(void)
 {
-    const char naruto[] = "Soldado Soldado";
-    char *sonic;
-    sonic = (ft_strdup(naruto));
-    printf("%s", sonic);
+	char *sonic = "abcdef";
+	char *resultado;
+
+	resultado = ft_strmapi(sonic, naruto);
+	printf("Original:  %s\n", str);
+	printf("Resultado: %s\n", resultado);
+	return 0;
 }*/

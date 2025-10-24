@@ -1,44 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-ped <joao-ped@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:48:23 by joao-ped          #+#    #+#             */
-/*   Updated: 2025/10/23 14:48:28 by joao-ped         ###   ########.fr       */
+/*   Created: 2025/10/20 17:02:16 by joao-ped          #+#    #+#             */
+/*   Updated: 2025/10/20 17:12:06 by joao-ped         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strdup(const char *s)
+int	ft_isalnum(int c)
 {
-	char	*str2;
-	int		i;
-
-	i = 0;
-	while (s[i])
-		i++;
-	str2 = malloc(sizeof(char) * (i + 1));
-	i = 0;
-	if (str2)
-	{
-		while (s[i])
-		{
-			str2[i] = s[i];
-			i++;
-		}
-		return (str2);
-	}
+	if ((c >= 'a') && (c <= 'z'))
+		return (8);
+	else if ((c >= 'A') && (c <= 'Z'))
+		return (8);
+	else if ((c >= '0') && (c <= '9'))
+		return (8);
 	else
-		return (NULL);
+		return (0);
 }
 /*#include <stdio.h>
-int main(void)
+#include <ctype.h>
+int	main(void)
 {
-    const char naruto[] = "Soldado Soldado";
-    char *sonic;
-    sonic = (ft_strdup(naruto));
-    printf("%s", sonic);
+	printf("%d, %d\n", ft_isalnum('a'), ft_isalnum('1'));
+	printf("%d, %d\n", isalnum('a'), isalnum('1'));
 }*/

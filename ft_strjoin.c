@@ -1,41 +1,59 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joao-ped <joao-ped@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/23 14:47:01 by joao-ped          #+#    #+#             */
+/*   Updated: 2025/10/24 16:22:47 by joao-ped         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static int  ft_total_len(char const *s1, char const *s2)
+#include "libft.h"
+
+static int	ft_total_len(char const *s1, char const *s2)
 {
-  int i;
+	int	c;
 
-  i = 0;
-  while (s1[i])
-    i++;
-  while (s2[i])
-    i++;
-  return (i);
+	c = 0;
+	while (s1[c])
+		c++;
+	while (s2[c])
+		c++;
+	return (c);
 }
 
-char    *ft_strjoin(char const *s1, char const *s2)
+static int	ft_getstr(char *dest, const char *src, int i, int j)
 {
-    char    *s3;
-    int i;
-    int j;
+	while (src[i])
+	{
+		dest[j] = src[i];
+		i++;
+		j++;
+	}
+	return (j);
+}
 
-    s3 = malloc(sizeof(char) * ft_total_len(s1, s2));
-    i = 0;
-    j = 0;
-    while (s1[i])
-    {
-        s3[j] = s1[i];
-        i++;
-        j++;
-    }
-    i = 0;
-    while (s2[i])
-    {
-        s3[j] = s2[i];
-        i++;
-        j++;
-    }
-    s3[j] = '\0';
-    return (s3);
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*s3;
+	int		i;
+	int		j;
+
+	s3 = malloc(sizeof(char) * ft_total_len(s1, s2));
+	i = 0;
+	j = 0;
+	if (s3)
+	{
+		ft_getstr(s3, s1, i, j);
+		i = 0;
+		ft_getstr(s3, s2, i, j);
+		s3[j] = '\0';
+		return (s3);
+	}
+	else
+		return (NULL);
 }
 /*
 #include <stdio.h>

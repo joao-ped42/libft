@@ -1,10 +1,22 @@
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: joao-ped <joao-ped@student.42.rio>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/23 14:47:09 by joao-ped          #+#    #+#             */
+/*   Updated: 2025/10/23 14:47:21 by joao-ped         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char    *sub;
-	size_t    i;
-	unsigned int    j;
+	char				*sub;
+	size_t				i;
+	unsigned int		j;
 
 	i = 0;
 	j = 0;
@@ -17,7 +29,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		i++;
 	}
 	sub[len] = '\0';
-	return(sub);
+	return (sub);
 }
 /*
 #include <stdio.h>

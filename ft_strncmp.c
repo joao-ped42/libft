@@ -1,44 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-ped <joao-ped@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:48:23 by joao-ped          #+#    #+#             */
-/*   Updated: 2025/10/23 14:48:28 by joao-ped         ###   ########.fr       */
+/*   Created: 2025/10/24 14:51:56 by joao-ped          #+#    #+#             */
+/*   Updated: 2025/10/24 14:52:02 by joao-ped         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+int	ft_strncmp(char const *s1, char const *s2, size_t n)
 {
-	char	*str2;
-	int		i;
+	size_t	i;
 
+	if (n == 0)
+		return (0);
 	i = 0;
-	while (s[i])
-		i++;
-	str2 = malloc(sizeof(char) * (i + 1));
-	i = 0;
-	if (str2)
+	while ((i < n - 1) && (s1[i] != '\0')
+		&& (s2[i] != '\0') && (s1[i] == s2[i]))
 	{
-		while (s[i])
-		{
-			str2[i] = s[i];
-			i++;
-		}
-		return (str2);
+		i++;
 	}
-	else
-		return (NULL);
+	return (s1[i] - s2[i]);
 }
-/*#include <stdio.h>
-int main(void)
+/*
+#include <stdio.h>
+#include <string.h>
+
+int	main(void)
 {
-    const char naruto[] = "Soldado Soldado";
-    char *sonic;
-    sonic = (ft_strdup(naruto));
-    printf("%s", sonic);
+	char	naruto[] = "Hello";
+	char	naruto1[] = "Hellz";
+	
+	printf("%d\n", ft_strncmp(naruto, naruto1, 0));
+	
+	printf("%d", strncmp(naruto, naruto1, 0));
+	
+	return (0);
 }*/

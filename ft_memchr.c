@@ -1,44 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-ped <joao-ped@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:48:23 by joao-ped          #+#    #+#             */
-/*   Updated: 2025/10/23 14:48:28 by joao-ped         ###   ########.fr       */
+/*   Created: 2025/10/24 14:57:46 by joao-ped          #+#    #+#             */
+/*   Updated: 2025/10/24 15:16:34 by joao-ped         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	*str2;
-	int		i;
+	size_t			i;
+	unsigned char	*str;
 
 	i = 0;
-	while (s[i])
-		i++;
-	str2 = malloc(sizeof(char) * (i + 1));
-	i = 0;
-	if (str2)
+	str = (unsigned char *)s;
+	while ((str) && (i < n))
 	{
-		while (s[i])
-		{
-			str2[i] = s[i];
-			i++;
-		}
-		return (str2);
+		if (str[0] == c)
+			return (str);
+		str++;
+		i++;
 	}
-	else
-		return (NULL);
+	return (NULL);
 }
-/*#include <stdio.h>
-int main(void)
+/*
+#include <stdio.h>
+#include <string.h>
+int	main(void)
 {
-    const char naruto[] = "Soldado Soldado";
-    char *sonic;
-    sonic = (ft_strdup(naruto));
-    printf("%s", sonic);
+	const char naruto[] = "Naruto e sasuke";
+	printf("Original: %s\n", memchr(naruto, 'e', 8));
+	printf("Fajuta: %s", ft_memchr(naruto, 'e', 8));
 }*/

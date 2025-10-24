@@ -1,44 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-ped <joao-ped@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:48:23 by joao-ped          #+#    #+#             */
-/*   Updated: 2025/10/23 14:48:28 by joao-ped         ###   ########.fr       */
+/*   Created: 2025/10/23 21:27:50 by joao-ped          #+#    #+#             */
+/*   Updated: 2025/10/23 21:42:53 by joao-ped         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+int	ft_atoi(const char *nptr)
 {
-	char	*str2;
-	int		i;
+	int	sign;
+	int	i;
+	int	k;
+	int	result;
 
+	sign = 1;
 	i = 0;
-	while (s[i])
-		i++;
-	str2 = malloc(sizeof(char) * (i + 1));
-	i = 0;
-	if (str2)
+	k = 0;
+	result = 0;
+	while (!((nptr[i] >= '0') && (nptr[i] <= '9')))
 	{
-		while (s[i])
-		{
-			str2[i] = s[i];
-			i++;
-		}
-		return (str2);
+		if (nptr[i] == '-')
+			sign = sign * -1;
+		i++;
+		k++;
+		if (k > 1)
+			return (0);
 	}
-	else
-		return (NULL);
+	while ((nptr[i] >= '0') && (nptr[i] <= '9'))
+	{
+		result = (result * 10) + (nptr[i] - '0');
+		i++;
+	}
+	return (result * sign);
 }
 /*#include <stdio.h>
-int main(void)
+int	main(void)
 {
-    const char naruto[] = "Soldado Soldado";
-    char *sonic;
-    sonic = (ft_strdup(naruto));
-    printf("%s", sonic);
+	printf("%d", ft_atoi("--8496"));
 }*/

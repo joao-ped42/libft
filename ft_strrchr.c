@@ -1,63 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: joao-ped <joao-ped@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/23 14:48:41 by joao-ped          #+#    #+#             */
-/*   Updated: 2025/10/23 14:48:56 by joao-ped         ###   ########.fr       */
+/*   Created: 2025/10/23 21:18:47 by joao-ped          #+#    #+#             */
+/*   Updated: 2025/10/23 21:24:09 by joao-ped         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_total_len(char const *s1, char const *set)
+char	*ft_strrchr(const char *s, int c)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (s1[i])
-		i++;
-	while (set[j])
+	while (s[i])
 	{
-		j++;
-		i--;
-	}
-	return (i);
-}
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	char	*str;
-	int		i;
-	int		j;
-	int		k;
-
-	str = malloc(sizeof(char) * ft_total_len(s1, set));
-	i = 0;
-	j = 0;
-	k = 0;
-	while (s1[i])
-	{
-		if (s1[i] != set[j])
-		{
-			str[k] = s1[i];
-			k++;
-		}
-		else
+		if (s[i] == c)
 			j++;
 		i++;
 	}
-	return (str);
+	i = 0;
+	while ((*s) && (j != 0))
+	{
+		if (*s == c)
+			j--;
+		s++;
+	}
+	return ((char *)s);
 }
 /*
 #include <stdio.h>
 int main(void)
 {
-	char naruto[] = "Naruto e Sasuke";
-    char sonic[] = "Sas";
-    printf("%s", ft_strtrim(naruto, sonic));
+    char naruto[] = "Naruto ANDDDDDDDDDDD sasuke";
+    printf("%s\n", ft_strrchr(naruto, 's'));
 }*/
